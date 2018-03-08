@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import Provider from './Provider.js';
+
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+
   render() {
     return (
       <div className="App">
@@ -12,6 +18,7 @@ class App extends Component {
         <p className="App-intro">
           Search doctors or medical facilities near you.
         </p>
+        <Provider providerType="doctor"></Provider>
       </div>
     );
   }
