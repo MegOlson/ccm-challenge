@@ -4,17 +4,14 @@ import Collapsible from 'react-collapsible';
 const Provider = props => (
   <div className="provider-info">
 
-    {props.error &&
+    { props.error &&
       <p className="error-message">
         { props.error }
       </p>
     }
 
-    { props.response && props.response.map(function(response, index){
-        return
-        <p key={ index }>
-          {response.first}
-        </p>;
+    { props.results && props.results.map(function(response, index){
+      return <p key= { index }>{ response.city }</p>
       })
     }
 
