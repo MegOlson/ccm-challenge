@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
 
 const Provider = props => (
-  <div>
-    { props.city && props.state && <p>Location: {props.city}, {props.state}</p> }
-    { props.first && <p>First Name: {props.first}</p> }
-    { props.error && <p>{ props.error }</p> }
+  <div className="provider-info">
+    {props.city && props.state &&
+      <p className="provider-key"> Location:
+        <span className="provider-heading"> {props.city}, {props.state}</span>
+      </p>}
+
+    {props.first &&
+      <p className="provider-key">First Name:
+        <span className="provider-heading"> {props.first}</span>
+      </p>}
+
+    {props.error &&
+      <p className="error-message">
+        { props.error }
+      </p>}
+
   </div>
 )
 

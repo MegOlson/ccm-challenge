@@ -44,20 +44,26 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Christian Care Ministries</h1>
-        </header>
-        <p className="App-intro">
-          Search doctors or medical facilities near you.
-        </p>
-        <Title/>
-        <Form getProviders={this.getProviders}/>
-        <Provider
-          city={this.state.city}
-          state={this.state.state}
-          first={this.state.first}
-          error={this.state.error}
-        />
+        <div className="wrapper">
+          <div className="content">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-4 title-container">
+                  <Title/>
+                </div>
+                <div className="col-md-7 form-container">
+                  <Form getProviders={this.getProviders}/>
+                  <Provider
+                    city={this.state.city}
+                    state={this.state.state}
+                    first={this.state.first}
+                    error={this.state.error}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
