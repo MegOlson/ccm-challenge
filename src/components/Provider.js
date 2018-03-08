@@ -10,13 +10,13 @@ const Provider = props => (
       </p>
     }
 
-    <Collapsible trigger={props.first}>
-      {props.city && props.state &&
-        <p className="provider-key"> Location:
-          <span className="provider-heading"> {props.city}, {props.state}</span>
-        </p>
-      }
-    </Collapsible>
+    { props.response && props.response.map(function(response, index){
+        return
+        <p key={ index }>
+          {response.first}
+        </p>;
+      })
+    }
 
   </div>
 )

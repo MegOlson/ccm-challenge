@@ -6,9 +6,7 @@ import Provider from './components/Provider';
 
 class App extends React.Component {
   state = {
-    city: undefined,
-    state: undefined,
-    first: undefined,
+    response: undefined,
     error: undefined
   }
 
@@ -20,22 +18,12 @@ class App extends React.Component {
     const data = await api_call.json();
     if (providerType && zip) {
       this.setState({
-        city: data.results.map(function(result, index){
-          return result.city
-        }),
-        state: data.results.map(function(result, index){
-          return result.state
-        }),
-        first: data.results.map(function(result, index){
-          return result.first
-        }),
+        response: data.results,
         error: ""
       });
     } else {
       this.setState({
-        city: undefined,
-        state: undefined,
-        first: undefined,
+        response: undefined,
         error: "Please choose a Provider Type and enter your Zip Code."
       })
     }
@@ -54,9 +42,7 @@ class App extends React.Component {
                 <div className="col-md-7 form-container">
                   <Form getProviders={this.getProviders}/>
                   <Provider
-                    city={this.state.city}
-                    state={this.state.state}
-                    first={this.state.first}
+                    response={this.state.response}
                     error={this.state.error}
                   />
                 </div>
