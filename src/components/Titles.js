@@ -5,7 +5,7 @@ class Title extends React.Component {
     return (
       <div>
         <h1>Medical Finder</h1>
-        <p>Search by medical type, location, and more...</p>
+        <p>Search by medical type and location.</p>
       </div>
     );
   }
