@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
+import Title from './components/Titles';
+import Form from './components/Form';
+import Provider from './components/Provider';
 
-import Provider from './Provider.js';
-
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
+class App extends React.Component {
+  getProviders = async (e) => {
+    e.preventDefault();
+    const providerType = e.target.elements.provider_type.value;
+    const zip = e.target.elements.zip.value;
+    const api_call = await fetch(`https://provider-api.ccmnpe.com/search?providerType=${providerType}&zip=${zip}`);
+    const data = await api_call.json();
+    console.log(data);
   }
 
   render() {
@@ -18,7 +23,9 @@ class App extends Component {
         <p className="App-intro">
           Search doctors or medical facilities near you.
         </p>
-        <Provider providerType="doctor"></Provider>
+        <Title/>
+        <Form getProviders={this.getProviders}/>
+        <Provider/>
       </div>
     );
   }
