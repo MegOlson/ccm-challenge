@@ -1,23 +1,3 @@
-{props.city && props.state &&
-  <p className="provider-key"> Location:
-    <span className="provider-heading"> {props.city}, {props.state}</span>
-  </p>
-}
-
-{ props.response && props.response.map(function(response, index){
-    return
-    <p key={ index }>
-      {response.first}
-      <Collapsible trigger={props.first}>
-        {props.city && props.state &&
-          <p className="provider-key"> Location:
-            <span className="provider-heading"> {props.city}, {props.state}</span>
-          </p>
-        }
-      </Collapsible>
-    </p>;
-  })
-}
 
 <Collapsible trigger={props.first}>
   {props.city && props.state &&

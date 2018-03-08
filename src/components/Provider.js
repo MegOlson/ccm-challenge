@@ -11,7 +11,11 @@ const Provider = props => (
     }
 
     { props.results && props.results.map(function(response, index){
-      return <p key= { index }>{ response.city }</p>
+      return <Collapsible trigger={response.first + " " + response.last}>
+        <p className="provider-key"> Location:
+          <span className="provider-heading"> {response.city}, {response.state}</span>
+        </p>
+      </Collapsible>
       })
     }
 
