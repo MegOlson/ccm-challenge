@@ -4,9 +4,9 @@ import Collapsible from 'react-collapsible';
 const Provider = props => (
   <div className="provider-info">
 
-    { props.error &&
+    { props.errorMessage &&
       <p className="error-message">
-        { props.error }
+        { props.errorMessage }
       </p>
     }
 

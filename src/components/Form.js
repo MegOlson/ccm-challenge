@@ -6,7 +6,7 @@ const Form = props => (
       <option value="doctor">Doctor</option>
       <option value="facility">Facility</option>
     </select>
-    <input type="number" name="zip" placeholder="Zip Code"/>
+    <input type="number" name="zip" placeholder="Zip Code" maxLength="5" minLength="5"/>
     <button>Get Results</button>
   </form>
 )
