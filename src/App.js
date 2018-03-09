@@ -15,7 +15,10 @@ class App extends React.Component {
     e.preventDefault();
     const providerType = e.target.elements.provider_type.value;
     const zip = e.target.elements.zip.value;
-    const api_call = await fetch(`https://provider-api.ccmnpe.com/search?providerType=${providerType}&zip=${zip}`);
+    const firstName = e.target.elements.firstName.value;
+    const lastName = e.target.elements.lastName.value;
+    const gender = e.target.elements.gender.value;
+    const api_call = await fetch(`https://provider-api.ccmnpe.com/search?providerType=${providerType}&zip=${zip}&first=${firstName}&last=${lastName}&gender=${gender}`);
     const data = await api_call.json();
     if (providerType && zip) {
       this.setState({
@@ -30,11 +33,7 @@ class App extends React.Component {
         providerType: undefined
       });
     }
-    console.log(api_call.status);
-
   }
-
-
 
   render() {
     return (
