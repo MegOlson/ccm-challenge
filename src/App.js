@@ -18,7 +18,8 @@ class App extends React.Component {
     const firstName = e.target.elements.firstName.value;
     const lastName = e.target.elements.lastName.value;
     const gender = e.target.elements.gender.value;
-    const api_call = await fetch(`https://provider-api.ccmnpe.com/search?providerType=${providerType}&zip=${zip}&first=${firstName}&last=${lastName}&gender=${gender}`);
+    const facilityName = e.target.elements.facilityName.value;
+    const api_call = await fetch(`https://provider-api.ccmnpe.com/search?providerType=${providerType}&zip=${zip}&first=${firstName}&last=${lastName}&gender=${gender}&facilityName=${facilityName}`);
     const data = await api_call.json();
     if (providerType && zip) {
       this.setState({
