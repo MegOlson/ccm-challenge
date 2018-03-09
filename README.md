@@ -1,7 +1,7 @@
 # Medical Provider Finder
 ## Christian Care Ministries
 
-![image](https://github.com/MegOlson/ccm-challenge/ccm-screenshot.png)
+![image](https://github.com/MegOlson/ccm-challenge/blob/master/ccm-screenshot.png)
 
 ### React and Provider API Interview Challenge
 
