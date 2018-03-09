@@ -11,6 +11,22 @@ class App extends React.Component {
     providerType: undefined
   }
 
+  changeState = (zip, data, providerType) => {
+    if (zip) {
+      this.setState({
+        results: data.results,
+        errorMessage: data.errorMessage,
+        providerType: providerType
+      });
+    } else {
+      this.setState({
+        results: undefined,
+        errorMessage: data.errorMessage,
+        providerType: undefined
+      });
+    }
+  }
+
   getProviders = async (e) => {
     e.preventDefault();
     const providerType = e.target.elements.provider_type.value;
@@ -21,52 +37,16 @@ class App extends React.Component {
       const gender = e.target.elements.gender.value;
       const api_call = await fetch(`https://provider-api.ccmnpe.com/search?providerType=${providerType}&zip=${zip}&first=${firstName}&last=${lastName}&gender=${gender}`);
       const data = await api_call.json();
-      if (zip) {
-        this.setState({
-          results: data.results,
-          errorMessage: data.errorMessage,
-          providerType: providerType
-        });
-      } else {
-        this.setState({
-          results: undefined,
-          errorMessage: data.errorMessage,
-          providerType: undefined
-        });
-      }
+      { this.changeState(zip, data, providerType) }
     } else if (providerType == "facility") {
       const facilityName = e.target.elements.facilityName.value;
       const api_call = await fetch(`https://provider-api.ccmnpe.com/search?providerType=${providerType}&zip=${zip}&facilityName=${facilityName}`);
       const data = await api_call.json();
-      if (zip) {
-        this.setState({
-          results: data.results,
-          errorMessage: data.errorMessage,
-          providerType: providerType
-        });
-      } else {
-        this.setState({
-          results: undefined,
-          errorMessage: data.errorMessage,
-          providerType: undefined
-        });
-      }
+      { this.changeState(zip, data, providerType) }
     } else if (!providerType) {
       const api_call = await fetch(`https://provider-api.ccmnpe.com/search?providerType=${providerType}&zip=${zip}`);
       const data = await api_call.json();
-      if (zip) {
-        this.setState({
-          results: data.results,
-          errorMessage: data.errorMessage,
-          providerType: providerType
-        });
-      } else {
-        this.setState({
-          results: undefined,
-          errorMessage: data.errorMessage,
-          providerType: undefined
-        });
-      }
+      { this.changeState(zip, data, providerType) }
     }
   }
 
