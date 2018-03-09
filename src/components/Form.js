@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
 
 class Form extends React.Component {
-
   state = {
     doctorsFieldsVisible: false,
     facilityFieldsVisible: false
   }
 
-  handleChange = async (e) => {
-    e.preventDefault()
+  handleChange = (e) => {
     if (e.target.value == "doctor") {
+      console.log(e.target.value)
       this.setState({
         doctorsFieldsVisible: true,
         facilityFieldsVisible: false
       });
     } else if (e.target.value == "facility") {
+      console.log(e.target.value)
       this.setState({
         doctorsFieldsVisible: false,
         facilityFieldsVisible: true
       });
     } else {
+      console.log(e.target.value)
       this.setState({
         doctorsFieldsVisible: false,
         facilityFieldsVisible: false
@@ -29,15 +30,15 @@ class Form extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.props.getProviders} onChange={this.handleChange}>
-        <select name="provider_type">
+      <form onSubmit={this.props.getProviders} >
+        <select name="provider_type" onChange={this.handleChange}>
           <option value="">Provider Type</option>
           <option value="doctor">Doctor</option>
           <option value="facility">Facility</option>
         </select>
         <input type="number" name="zip" placeholder="Zip Code"/>
         { this.state.doctorsFieldsVisible &&
-          <span class="doctor-fields">
+          <span className="doctor-fields">
             <input type="text" name="firstName" placeholder="First Name"/>
             <input type="text" name="lastName" placeholder="Last Name"/>
             <select name="gender">
@@ -48,7 +49,7 @@ class Form extends React.Component {
           </span>
         }
         { this.state.facilityFieldsVisible &&
-          <span class="facility-fields">
+          <span className="facility-fields">
             <input type="text" name="facilityName" placeholder="Facility Name"/>
           </span>
         }
