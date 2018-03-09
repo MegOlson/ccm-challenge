@@ -57,23 +57,17 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="wrapper">
-          <div className="content">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-4 title-container">
-                  <Title/>
-                </div>
-                <div className="col-md-7 form-container">
-                  <Form getProviders={this.getProviders}/>
-                  <Provider
-                    results={this.state.results}
-                    errorMessage={this.state.errorMessage}
-                    providerType={this.state.providerType}
-                  />
-                </div>
-              </div>
-            </div>
+        <div className="row">
+          <div className="col-md-5 title-container">
+            <Title/>
+          </div>
+          <div className="col-md-7 form-container">
+            <Form getProviders={this.getProviders}/>
+            <Provider
+              results={this.state.results}
+              errorMessage={this.state.errorMessage}
+              providerType={this.state.providerType}
+            />
           </div>
         </div>
       </div>
