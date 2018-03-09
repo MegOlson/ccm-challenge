@@ -103,7 +103,3 @@ button {
   color: #92aeb2;
   font-weight: 200;
 }
-
-button:active {
-  outline: none;
-}

@@ -7,7 +7,8 @@ import Provider from './components/Provider';
 class App extends React.Component {
   state = {
     results: undefined,
-    error: undefined
+    error: undefined,
+    providerType: undefined
   }
 
   getProviders = async (e) => {
@@ -19,12 +20,14 @@ class App extends React.Component {
     if (providerType && zip) {
       this.setState({
         results: data.results,
-        error: ""
+        error: "",
+        providerType: providerType
       });
     } else {
       this.setState({
         results: undefined,
-        error: "Please choose a Provider Type and enter your Zip Code."
+        error: "Please choose a Provider Type and enter your Zip Code.",
+        providerType: undefined
       })
     }
   }
@@ -44,6 +47,7 @@ class App extends React.Component {
                   <Provider
                     results={this.state.results}
                     error={this.state.error}
+                    providerType={this.state.providerType}
                   />
                 </div>
               </div>
