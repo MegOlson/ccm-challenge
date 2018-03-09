@@ -7,20 +7,18 @@ class Form extends React.Component {
   }
 
   handleChange = (e) => {
+    e.preventDefault();
     if (e.target.value == "doctor") {
-      console.log(e.target.value)
       this.setState({
         doctorsFieldsVisible: true,
         facilityFieldsVisible: false
       });
     } else if (e.target.value == "facility") {
-      console.log(e.target.value)
       this.setState({
         doctorsFieldsVisible: false,
         facilityFieldsVisible: true
       });
     } else {
-      console.log(e.target.value)
       this.setState({
         doctorsFieldsVisible: false,
         facilityFieldsVisible: false

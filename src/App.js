@@ -15,24 +15,42 @@ class App extends React.Component {
     e.preventDefault();
     const providerType = e.target.elements.provider_type.value;
     const zip = e.target.elements.zip.value;
-    const firstName = e.target.elements.firstName.value;
-    const lastName = e.target.elements.lastName.value;
-    const gender = e.target.elements.gender.value;
-    const facilityName = e.target.elements.facilityName.value;
-    const api_call = await fetch(`https://provider-api.ccmnpe.com/search?providerType=${providerType}&zip=${zip}&first=${firstName}&last=${lastName}&gender=${gender}&facilityName=${facilityName}`);
-    const data = await api_call.json();
-    if (providerType && zip) {
-      this.setState({
-        results: data.results,
-        errorMessage: data.errorMessage,
-        providerType: providerType
-      });
-    } else {
-      this.setState({
-        results: undefined,
-        errorMessage: data.errorMessage,
-        providerType: undefined
-      });
+    if (providerType == "doctor") {
+      const firstName = e.target.elements.firstName.value;
+      const lastName = e.target.elements.lastName.value;
+      const gender = e.target.elements.gender.value;
+      const api_call = await fetch(`https://provider-api.ccmnpe.com/search?providerType=${providerType}&zip=${zip}&first=${firstName}&last=${lastName}&gender=${gender}`);
+      const data = await api_call.json();
+      if (providerType && zip) {
+        this.setState({
+          results: data.results,
+          errorMessage: data.errorMessage,
+          providerType: providerType
+        });
+      } else {
+        this.setState({
+          results: undefined,
+          errorMessage: data.errorMessage,
+          providerType: undefined
+        });
+      }
+    } else if (providerType == "facility") {
+      const facilityName = e.target.elements.facilityName.value;
+      const api_call = await fetch(`https://provider-api.ccmnpe.com/search?providerType=${providerType}&zip=${zip}&facilityName=${facilityName}`);
+      const data = await api_call.json();
+      if (providerType && zip) {
+        this.setState({
+          results: data.results,
+          errorMessage: data.errorMessage,
+          providerType: providerType
+        });
+      } else {
+        this.setState({
+          results: undefined,
+          errorMessage: data.errorMessage,
+          providerType: undefined
+        });
+      }
     }
   }
 
