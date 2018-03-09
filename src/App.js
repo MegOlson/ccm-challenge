@@ -21,7 +21,7 @@ class App extends React.Component {
       const gender = e.target.elements.gender.value;
       const api_call = await fetch(`https://provider-api.ccmnpe.com/search?providerType=${providerType}&zip=${zip}&first=${firstName}&last=${lastName}&gender=${gender}`);
       const data = await api_call.json();
-      if (providerType && zip) {
+      if (zip) {
         this.setState({
           results: data.results,
           errorMessage: data.errorMessage,
@@ -38,7 +38,23 @@ class App extends React.Component {
       const facilityName = e.target.elements.facilityName.value;
       const api_call = await fetch(`https://provider-api.ccmnpe.com/search?providerType=${providerType}&zip=${zip}&facilityName=${facilityName}`);
       const data = await api_call.json();
-      if (providerType && zip) {
+      if (zip) {
+        this.setState({
+          results: data.results,
+          errorMessage: data.errorMessage,
+          providerType: providerType
+        });
+      } else {
+        this.setState({
+          results: undefined,
+          errorMessage: data.errorMessage,
+          providerType: undefined
+        });
+      }
+    } else if (!providerType) {
+      const api_call = await fetch(`https://provider-api.ccmnpe.com/search?providerType=${providerType}&zip=${zip}`);
+      const data = await api_call.json();
+      if (zip) {
         this.setState({
           results: data.results,
           errorMessage: data.errorMessage,
