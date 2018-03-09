@@ -27,6 +27,7 @@ const Provider = props => (
 
       { props.providerType == "facility" && props.results && props.results.map(function(response, index){
           return <Collapsible trigger={response.facilityName}>
+            <p className="grey-text">Click results to view details.</p>
             <p className="provider-key"> Facility Type:
               <span className="provider-heading"> {response.facilityType}</span>
             </p>

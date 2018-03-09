@@ -4,70 +4,75 @@ body {
   font-family: "Open Sans", serif;
 }
 
-.wrapper {
+.title-container {
   height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.content {
-  height: 90vh;
-  background: #fff;
-  width: 80%;
-  margin: 0 auto;
-}
-
-.title-container {
-  height: 90vh;
-  display: flex;
-  align-items: center;
   justify-content: center;
   text-align: center;
   color: #000;
   background-color: #e8eced;
 }
 
+.title-text h1 {
+  margin-top: 80px;
+  font-size: 50px;
+}
+
+.title-text h3 {
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+
+.title-text h4 {
+  margin-bottom: 40px;
+}
+
+.line {
+  height: 1px;
+  width: 70%;
+  background-color: #adadad;
+  margin-left: 15%;
+  margin-bottom: 40px;
+}
+
+.title-text p {
+  padding-right: 80px;
+  padding-left: 80px;
+}
+
 .form-container {
   background-color: #2c3e50;
-  height: 90vh;
-  padding-top: 100px;
+  height: 100vh;
+  padding-top: 80px;
   padding-left: 50px;
   color: white;
 }
 
-input[type='number'], input[type='text'] {
+input[type='number'], input[type='text'], select {
   background-color: #2c3e50;
-  border: 0;
-  border-bottom: solid 1px #92aeb2;
   width: 30%;
   padding-bottom: 4px;
   font-weight: lighter;
   letter-spacing: 2px;
   margin-bottom: 30px;
   margin-right: 20px;
-  font-size: 20px;
+  font-size: 18px;
   outline: none;
 }
 
+input[type='number'], input[type='text'] {
+  border: 0;
+  border-bottom: solid 1px #92aeb2;
+}
+
 select {
-  background-color: #2c3e50;
   border: 1;
-  border: solid 1px #92aeb2;
-  width: 30%;
-  padding-bottom: 4px;
-  font-weight: lighter;
-  letter-spacing: 2px;
-  margin-bottom: 30px;
-  margin-right: 20px;
-  font-size: 20px;
-  outline: none;
 }
 
 button {
   border: 0;
   padding: 8px 20px;
-  margin: 0 2px;
+  margin: 0 2px 12px;
   border-radius: 2px;
   font-weight: lighter;
   letter-spacing: 1px;
@@ -76,6 +81,7 @@ button {
   background-color: #92aeb2;
   color: #fff;
   font-weight: 100;
+  display: block;
 }
 
 .provider-key {
@@ -96,10 +102,14 @@ button {
   letter-spacing: 2px;
   line-height: 35px;
   overflow: scroll;
-  height: 450px;
+  height: 425px;
 }
 
 .provider-heading {
   color: #92aeb2;
   font-weight: 200;
+}
+
+.grey-text{
+  color: darkgrey;
 }
