@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 const Title = () => (
-  <div>
+  <div className="title-text">
     <h1>Medical Finder</h1>
-    <p>Search by medical type and location.</p>
+    <h5>Search for pre-approved medical providers near you.</h5>
   </div>
 )
 
