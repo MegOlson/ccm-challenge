@@ -5,13 +5,16 @@ import Form from './components/Form';
 import Provider from './components/Provider';
 
 class App extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  // }
   state = {
     results: undefined,
     errorMessage: undefined,
     providerType: undefined
   }
 
-  changeState = (zip, data, providerType) => {
+  changeState(zip, data, providerType) {
     if (zip) {
       this.setState({
         results: data.results,
