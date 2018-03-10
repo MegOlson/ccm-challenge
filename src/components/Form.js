@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 
 class Form extends React.Component {
-  state = {
-    doctorsFieldsVisible: false,
-    facilityFieldsVisible: false
+  constructor(props) {
+    super(props);
+    state = {
+      doctorsFieldsVisible: false,
+      facilityFieldsVisible: false
+    }
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange = (e) => {
+  handleChange(e) {
     e.preventDefault();
     if (e.target.value == "doctor") {
       this.setState({
