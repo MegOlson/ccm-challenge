@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Form extends React.Component {
   constructor(props) {
     super(props);
-    state = {
+    this.state = {
       doctorsFieldsVisible: false,
       facilityFieldsVisible: false
     }

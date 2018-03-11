@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import Title from './components/Titles';
 import Form from './components/Form';
-import Provider from './components/Provider';
+import Response from './components/Response';
 
 class App extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-  state = {
-    results: undefined,
-    errorMessage: undefined,
-    providerType: undefined
+  constructor(props) {
+    super(props);
+    this.state = {
+      results: undefined,
+      errorMessage: undefined,
+      providerType: undefined
+    };
+    this.changeState = this.changeState.bind(this);
+    this.getProviders = this.getProviders.bind(this);
   }
 
   changeState(zip, data, providerType) {
@@ -30,7 +34,7 @@ class App extends React.Component {
     }
   }
 
-  getProviders = async (e) => {
+  async getProviders(e) {
     e.preventDefault();
     const providerType = e.target.elements.provider_type.value;
     const zip = e.target.elements.zip.value;
@@ -62,7 +66,7 @@ class App extends React.Component {
           </div>
           <div className="col-md-7 form-container">
             <Form getProviders={this.getProviders}/>
-            <Provider
+            <Response
               results={this.state.results}
               errorMessage={this.state.errorMessage}
               providerType={this.state.providerType}
