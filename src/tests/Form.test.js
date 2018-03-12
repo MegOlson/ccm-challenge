@@ -3,11 +3,11 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App.js';
+import App from '../components/Form.js';
 
 describe('stringContaining', () => {
-  const expected = 'doctor';
+  const expected = 'Get Results';
   it('matches if the actual string does include the expected string', () => {
-    expect('doctor').toEqual(expect.stringContaining(expected));
+    expect('Get Results').toEqual(expect.stringContaining(expected));
   });
 });

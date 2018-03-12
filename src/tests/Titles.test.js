@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Titles from './components/Titles.js';
+import Titles from '../components/Titles.js';
 
 describe('stringContaining', () => {
   const expected = 'Medical Finder';
