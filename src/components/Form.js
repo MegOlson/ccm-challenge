@@ -4,30 +4,17 @@ import { connect } from 'react-redux';
 class Form extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      doctorsFieldsVisible: false,
-      facilityFieldsVisible: false
-    }
     this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(e) {
     e.preventDefault();
     if (e.target.value == "doctor") {
-      this.setState({
-        doctorsFieldsVisible: true,
-        facilityFieldsVisible: false
-      });
+      this.props.dispatch({ type: "DOCTOR_FIELDS_AVAILABLE" });
     } else if (e.target.value == "facility") {
-      this.setState({
-        doctorsFieldsVisible: false,
-        facilityFieldsVisible: true
-      });
+      this.props.dispatch({ type: "FACILITY_FIELDS_AVAILABLE" });
     } else {
-      this.setState({
-        doctorsFieldsVisible: false,
-        facilityFieldsVisible: false
-      });
+      this.props.dispatch({ type: "BASIC_FIELDS_AVAILABLE" });
     }
   }
 
@@ -40,7 +27,7 @@ class Form extends React.Component {
           <option value="facility">Facility</option>
         </select>
         <input type="number" name="zip" placeholder="Zip Code"/>
-        { this.state.doctorsFieldsVisible &&
+        { this.props.doctorsFieldsVisible &&
           <span className="doctor-fields">
             <input type="text" name="firstName" placeholder="First Name"/>
             <input type="text" name="lastName" placeholder="Last Name"/>
@@ -51,7 +38,7 @@ class Form extends React.Component {
             </select>
           </span>
         }
-        { this.state.facilityFieldsVisible &&
+        { this.props.facilityFieldsVisible &&
           <span className="facility-fields">
             <input type="text" name="facilityName" placeholder="Facility Name"/>
           </span>
@@ -62,4 +49,11 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+function mapStateToProps(state) {
+  return {
+    doctorsFieldsVisible: state.doctorsFieldsVisible,
+    facilityFieldsVisible: state.facilityFieldsVisible
+  }
+}
+
+export default connect(mapStateToProps)(Form);

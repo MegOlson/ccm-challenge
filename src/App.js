@@ -1,10 +1,50 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { combineReducers, createStore } from 'redux';
 import Title from './components/Titles';
 import Form from './components/Form';
 import Response from './components/Response';
+
+const initialState = {
+  forms: {
+    doctorsFieldsVisible: false,
+    facilityFieldsVisible: false
+  },
+  api: {
+    results: undefined,
+    errorMessage: undefined,
+    providerType: undefined
+  }
+};
+
+function reducers(state = initialState, action) {
+  switch (action.type) {
+    case "FACILITY_FIELDS_AVAILABLE":
+      return {
+        facilityFieldsVisible: true
+      };
+    case "DOCTOR_FIELDS_AVAILABLE":
+      return {
+        doctorsFieldsVisible: true
+      };
+    case "BASIC_FIELDS_AVAILABLE":
+      return {
+        doctorsFieldsVisible: false,
+        facilityFieldsVisible: false
+      };
+    default:
+      return state
+  }
+}
+
+const store = createStore(reducers);
+
+store.dispatch({ type: "DOCTOR_FIELDS_AVAILABLE" });
+store.dispatch({ type: "FACILITY_FIELDS_AVAILABLE" });
+store.dispatch({ type: "BASIC_FIELDS_AVAILABLE" });
+store.dispatch({ type: "SUBMIT_REQUEST" });
+store.dispatch({ type: "MISSING_DATA" });
 
 class App extends React.Component {
   constructor(props) {
@@ -59,21 +99,23 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="row">
-          <div className="col-md-5 title-container">
-            <Title/>
-          </div>
-          <div className="col-md-7 form-container">
-            <Form getProviders={this.getProviders}/>
-            <Response
-              results={this.state.results}
-              errorMessage={this.state.errorMessage}
-              providerType={this.state.providerType}
-            />
+      <Provider store={store}>
+        <div className="App">
+          <div className="row">
+            <div className="col-md-5 title-container">
+              <Title/>
+            </div>
+            <div className="col-md-7 form-container">
+              <Form getProviders={this.getProviders}/>
+              <Response
+                results={this.state.results}
+                errorMessage={this.state.errorMessage}
+                providerType={this.state.providerType}
+              />
+            </div>
           </div>
         </div>
-      </div>
+      </Provider>
     );
   }
 }
